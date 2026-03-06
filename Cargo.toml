@@ -1,5 +1,5 @@
 [package]
-name = "tom-rl"
+name = "torl"
 version = "0.1.0"
 edition = "2021"
 description = "Train RL models from a TOML config file — no code required"

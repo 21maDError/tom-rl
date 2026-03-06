@@ -1,4 +1,4 @@
-# tom-rl 🤖
+# Torl 🤖
 
 > **Train reinforcement learning models from a single TOML config — zero code required.**
 
