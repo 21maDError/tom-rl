@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────
+# MountainCar  ×  DQN
+# Reward shaping: +100 at goal, -1 per step
+# ─────────────────────────────────────────────────────────
+
+[environment]
+name      = "mountain_car"
+max_steps = 200
+seed      = 42
+
+[network]
+hidden_layers = [128, 128]
+activation    = "relu"
+
+[algorithm]
+name          = "dqn"
+gamma         = 0.99
+learning_rate = 5e-4
+optimizer     = "adam"
+
+[algorithm.dqn]
+epsilon_start      = 1.0
+epsilon_end        = 0.05
+epsilon_decay      = 0.998
+buffer_size        = 20000
+batch_size         = 64
+target_update_freq = 200
+warmup_steps       = 1000
+
+[training]
+episodes      = 500
+log_interval  = 10
+eval_interval = 100
+eval_episodes = 5
+save_best     = true
+
+[output]
+model_path  = "./models/mountaincar_dqn"
+format      = "json"
+print_curve = true

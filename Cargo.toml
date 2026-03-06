@@ -1,0 +1,26 @@
+[package]
+name = "tom-rl"
+version = "0.1.0"
+edition = "2021"
+description = "Train RL models from a TOML config file — no code required"
+license = "MIT"
+
+[[bin]]
+name = "torl"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "1.0"
+serde_json = "1"
+rand = "0.10"
+rand_distr = "0.6"
+colored = "3"
+indicatif = "0.18"
+anyhow = "1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

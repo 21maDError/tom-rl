@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────────────────
+# CartPole  ×  DQN
+# Target: balance the pole for 500 steps → reward ≈ 475+
+# ─────────────────────────────────────────────────────────
+
+[environment]
+name      = "cartpole"
+max_steps = 500
+seed      = 42
+
+[network]
+hidden_layers = [128, 64]
+activation    = "relu"
+
+[algorithm]
+name          = "dqn"
+gamma         = 0.99
+learning_rate = 1e-3
+optimizer     = "adam"
+
+[algorithm.dqn]
+epsilon_start     = 1.0
+epsilon_end       = 0.01
+epsilon_decay     = 0.995
+buffer_size       = 10000
+batch_size        = 64
+target_update_freq = 100
+warmup_steps      = 500
+
+[training]
+episodes      = 600
+log_interval  = 10
+eval_interval = 100
+eval_episodes = 5
+save_best     = true
+target_reward = 475.0
+
+[output]
+model_path  = "./models/cartpole_dqn"
+format      = "json"
+print_curve = true

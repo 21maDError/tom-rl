@@ -1,0 +1,34 @@
+# ─────────────────────────────────────────────────────────
+# CartPole  ×  REINFORCE  (Monte-Carlo policy gradient)
+# ─────────────────────────────────────────────────────────
+
+[environment]
+name      = "cartpole"
+max_steps = 500
+seed      = 42
+
+[network]
+hidden_layers = [128, 64]
+activation    = "relu"
+
+[algorithm]
+name          = "reinforce"
+gamma         = 0.99
+learning_rate = 1e-3
+optimizer     = "adam"
+
+[algorithm.reinforce]
+normalize_returns = true
+baseline          = "mean"
+
+[training]
+episodes      = 800
+log_interval  = 10
+eval_interval = 100
+eval_episodes = 5
+save_best     = true
+
+[output]
+model_path  = "./models/cartpole_reinforce"
+format      = "json"
+print_curve = true
